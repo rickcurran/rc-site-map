@@ -33,7 +33,7 @@ This shortcode is used to get and render a list of published posts like a site m
 - `wrapper` - defaults to `'ul'`. Wrapping element of the list. Note, do not include greater than / less than characters, only the alphanumeric characters e.g. ul, p etc.
 - `wrapper_class` - defaults to `'rc_sitemap_list'`. CSS Class added to the wrapping element of the list.
 
-==Example usage:==
+== Example usage: ==
 
 `[rc_sitemap post_type="your_cpt_name" orderby="date" order="DESC" heading_text="My CPT Title" heading_tag="h1" wrapper="ul" wrapper_class="rc_sitemap_list"]`
 
