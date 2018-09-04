@@ -2,10 +2,12 @@
 /*
 Plugin Name: RC Site Map
 Plugin URI: http://suburbia.org.uk/projects/#rcsitemap
-Description: Render a list of pages / posts / cpts on any page or post using a shortcode [rc_sitemap]. Uses a subset of parameters of 'wp_list_pages' as well as some additional parameters.
-Version: 1.01
+Description: This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types.
+Version: 1.0
 Author: Rick Curran
 Author URI: http://suburbia.org.uk
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 add_action( 'admin_menu', 'rc_site_map_admin_page' );

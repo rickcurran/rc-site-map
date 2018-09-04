@@ -3,8 +3,8 @@ Contributors: rickcurran
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FLMSQ9T7BYFBQ
 Tags: sitemap
 Requires at least: 4.6
-Tested up to: 4.9.8
-Stable tag: 1
+Tested up to: 4.9
+Stable tag: 1.0
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,7 +13,7 @@ This plugin adds a shortcode that will list a site map or list of a particular t
 
 == Description ==
 
-This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types using a series. The shortcode is registered using the name: `rc_sitemap`. The shortcode will by default render an unordered list of the entries with a class of `"rc_sitemap_list"`. The optional heading that it outputs has the class `"rc_sitemap_heading"`
+This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types. The shortcode is registered using the name: `rc_sitemap`. The shortcode will by default render an unordered list of the entries with a class of `"rc_sitemap_list"`. The optional heading that it outputs has the class `"rc_sitemap_heading"`
 
 # Overview of shortcode
 
@@ -42,12 +42,24 @@ This shortcode is used to get and render a list of published posts like a site m
 1. This screen shot shows an example shortcode being entered in the WordPress editor.
 2. This screen shot shows the output of the shortcode being rendered on the front end of the website.
 
+== Installation ==
+	
+1. Upload the plugin package to the plugins directory of your site, or search for "RC Site Map" in the WordPress plugins directory from the Plugins section of your WordPress dashboard.
+2. Once uploaded or installed you must activate the plugin from the Plugins section of your WordPress dashboard.
+3. You can now use the shortcode `[rc_sitemap]` to display a list of posts.
+	
+== Frequently Asked Questions ==
+	
+= What does this plugin do? =
+
+This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types. The shortcode is registered using the name: `rc_sitemap`. The shortcode will by default render an unordered list of the entries with a class of `"rc_sitemap_list"`. The optional heading that it outputs has the class `"rc_sitemap_heading"`
+
+= I don't see a list of posts on my site, I only see text like this: `[rc_sitemap]
+
+Check that the plugin has been correctly uploaded, installed and activated. If not then the text of the shortcode will not be processed and will simply display on the site.
+
 == Changelog ==
 
 = 1.01 =
 
 * Added some additional attributes to provide more of the capabilities of `wp_list_pages` such as 'child_of', 'exclude', 'include' etc.
-
-= 1.0 =
-
-* Initial plugin build.
