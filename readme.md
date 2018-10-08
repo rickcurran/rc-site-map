@@ -1,10 +1,10 @@
 === RC Site Map Plugin ===
 Contributors: rickcurran
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FLMSQ9T7BYFBQ
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZEXMAMCYDS3G
 Tags: sitemap
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -93,7 +93,7 @@ If necessary the above default classes can be overridden from within your theme 
 
 == Changelog ==
 
-= 1.1 =
+= 1.2 =
 
-- Added 'heading_class' attribute to shortcode to enable a custom class to be added to the optional list heading.
-- Updated documentation to include more detail about CSS classes and styling.
+- Updated PayPal donation link
+- Fixed typo on donation link settings

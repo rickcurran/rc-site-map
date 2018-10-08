@@ -1,5 +1,9 @@
 # Changelog 
 
+## 1.2
+- Updated PayPal donation link
+- Fixed typo on donation link settings
+
 ## 1.1
 
 - Added 'heading_class' attribute to shortcode to enable a custom class to be added to the optional list heading.
