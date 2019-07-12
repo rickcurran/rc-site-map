@@ -91,6 +91,10 @@ In addition to the elements and classes specified above, each of the rendered li
 
 If necessary the above default classes can be overridden from within your theme by specifying them in some custom CSS.
 
+= My custom post type won't show up =
+
+For custom post types to be listed by this plugin they currently have to be hierarchical, e.g. in the 'register_post_type' function for setting up the CPT it would have hierarchical' => true and 'capability_type' => 'page'. A future update should enable all kinds of CPTs but for now this is required for CPTs to work with this plugin.
+
 == Changelog ==
 
 = 1.2 =
