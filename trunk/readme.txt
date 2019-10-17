@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: sitemap
 Requires at least: 4.6
 Tested up to: 5.2.1
-Stable tag: 1.2
+Stable tag: 1.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -96,6 +96,10 @@ If necessary the above default classes can be overridden from within your theme 
 For custom post types to be listed by this plugin they currently have to be hierarchical, e.g. in the 'register_post_type' function for setting up the CPT it would have hierarchical' => true and 'capability_type' => 'page'. A future update should enable all kinds of CPTs but for now this is required for CPTs to work with this plugin.
 
 == Changelog ==
+
+= 1.3 =
+
+- Removed limitation for custom post types to have to be hierarchical ('page' capability). This required a reasonably big change to the underlying code but any existing shortcodes should function as before, however it is worth reading the notes of the plugin as there are some changes that improve the functions of the shortcode. This underlying change will also enable some future improvements to the functionality of the plugin. 
 
 = 1.2 =
 

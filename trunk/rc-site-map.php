@@ -3,7 +3,7 @@
 Plugin Name: RC Site Map
 Plugin URI: http://suburbia.org.uk/projects/#rcsitemap
 Description: This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types.
-Version: 1.2
+Version: 1.3
 Author: Rick Curran
 Author URI: http://suburbia.org.uk
 License: GPLv2 or later
@@ -53,9 +53,12 @@ function rc_sitemap_shortcode( $atts ) {
 		'heading_tag' => 'h2',
 		'heading_class' => 'rc_sitemap_heading',
 		'child_of' => '',
+		'post_parent' => '',
 		'depth' => '',
 		'exclude' => '',
+		'post__not_in' => '',
 		'include' => '',
+		'post__in' => '',
 		'wrapper' => 'ul',
 		'wrapper_class' => 'rc_sitemap_list',
 	), $atts, 'rc_sitemap' );
@@ -66,10 +69,25 @@ function rc_sitemap_shortcode( $atts ) {
     $heading_text = sanitize_text_field( $atts[ 'heading_text' ] );
     $heading_tag = sanitize_text_field( $atts[ 'heading_tag' ] );
     $heading_class = sanitize_text_field( $atts[ 'heading_class' ] );
-    $child_of = sanitize_text_field( $atts[ 'child_of' ] );
+    
+    if ( sanitize_text_field( $atts[ 'child_of' ] ) != '' ) {
+        $post_parent = sanitize_text_field( $atts[ 'child_of' ] );
+    } else {
+        $post_parent = sanitize_text_field( $atts[ 'post_parent' ] );
+    }
     $depth = sanitize_text_field( $atts[ 'depth' ] );
-    $exclude = sanitize_text_field( $atts[ 'exclude' ] );
-    $include = sanitize_text_field( $atts[ 'include' ] );
+    
+    if ( sanitize_text_field( $atts[ 'exclude' ] ) != '' ) {
+        $post__not_in = sanitize_text_field( $atts[ 'exclude' ] );
+    } else {
+        $post__not_in = sanitize_text_field( $atts[ 'post__not_in' ] );
+    }
+    if ( sanitize_text_field( $atts[ 'include' ] ) != '' ) {
+        $post__in = sanitize_text_field( $atts[ 'include' ] );
+    } else {
+        $post__in = sanitize_text_field( $atts[ 'post__in' ] );
+    }
+    
     $wrapper = sanitize_text_field( $atts[ 'wrapper' ] );
     $wrapper_class = sanitize_text_field( $atts[ 'wrapper_class' ] );
     
@@ -93,19 +111,39 @@ function rc_sitemap_shortcode( $atts ) {
 	$rc_sitemap_data .= $before;
     
     $args = array(
-        'echo' => 0,
-        'post_type' => $post_type,
-        'sort_column' => $orderby,
-        'sort_order' => $order,
-        'title_li' => '',
-        'child_of' => $child_of,
-		'depth' => $depth,
-		'exclude' => $exclude,
-		'include' => $include       
+        //'echo' => 0, // Removed - unnecessary
+        'post_type' => $post_type, // Same
+        'orderby' => $orderby, // 'sort_column'
+        'order' => $order, // 'sort_order'
+        //'title_li' => '', // Removed - unnecessary
+        'post_parent' => $post_parent, // 'child_of'
+		//'depth' => $depth, // Depth has to be handled as child queries now, a bit tricky!!!
+		'post__not_in' => $post__not_in, // 'exclude'
+		'post__in' => $post__in //  'include'  
     );
     
-    $rc_sitemap_data .= wp_list_pages( $args );    
-	
+    //$rc_sitemap_data .= wp_list_pages( $args );  
+    
+    $rc_sitemap_data_query = new WP_Query( $args );
+    
+    if ( $rc_sitemap_data_query->have_posts() ) {
+        while ( $rc_sitemap_data_query->have_posts() ) {
+            $rc_sitemap_data_query->the_post();
+            
+            // TODO
+            // Child query...
+            //$depth, if -1 or 0 then get all children / depths, 1 = top level, 2, top plus one down, etc, etc
+            $children = ''; // Empty by default, need to loop over all levels and generate tree hierarchy
+            // TODO
+            
+            $rc_sitemap_data .= '<li class="page_item page-item-' . $rc_sitemap_data_query->post->ID . '"><a href="' . get_the_permalink() . '">' . get_the_title() . '</a>' . $children . '</li>';
+            
+            
+            
+        }
+    }
+    
+    
 	$rc_sitemap_data .= $after;
 	
 	return $rc_sitemap_data;
