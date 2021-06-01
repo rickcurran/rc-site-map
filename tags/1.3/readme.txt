@@ -3,8 +3,8 @@ Contributors: rickcurran
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZEXMAMCYDS3G
 Tags: sitemap
 Requires at least: 4.6
-Tested up to: 5.7.2
-Stable tag: 1.4
+Tested up to: 5.5.1
+Stable tag: 1.3
 Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -97,13 +97,10 @@ For custom post types to be listed by this plugin they currently have to be hier
 
 == Changelog ==
 
-= 1.4 =
-
-- Updated the url of the website for the plugin and clarify compatibility up to WordPress 5.7.2
-
 = 1.3 =
 
 - Removed limitation for custom post types to have to be hierarchical ('page' capability). This required a reasonably big change to the underlying code but any existing shortcodes should function as before, however it is worth reading the notes of the plugin as there are some changes that improve the functions of the shortcode. This underlying change will also enable some future improvements to the functionality of the plugin. 
+
 
 = 1.2 =
 

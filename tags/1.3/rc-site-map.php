@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: RC Site Map
-Plugin URI: https://qreate.co.uk/projects/#rcsitemap
+Plugin URI: http://suburbia.org.uk/projects/#rcsitemap
 Description: This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types.
-Version: 1.4
+Version: 1.3
 Author: Rick Curran
-Author URI: https://qreate.co.uk
+Author URI: http://suburbia.org.uk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */

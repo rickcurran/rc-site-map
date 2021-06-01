@@ -1,6 +1,11 @@
 # Changelog 
 
+## 1.4
+
+- Updated the url of the website for the plugin and clarify compatibility up to WordPress 5.7.2
+
 ## 1.2
+
 - Updated PayPal donation link
 - Fixed typo on donation link settings
 
