@@ -1,0 +1,13 @@
+{
+    "name": "rickcurran/rc-site-map",
+    "description": "WordPress shortcode for a hierarchical HTML sitemap.",
+    "license": "GPL-2.0-or-later",
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.4.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

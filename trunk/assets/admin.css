@@ -1,0 +1,25 @@
+/* Shortcode help styles, loaded only on the RC Site Map settings page. */
+.rc-site-map-help {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 960px;
+	margin-top: 20px;
+	padding: 20px;
+	border: 1px solid #c3c4c7;
+	background: #fff;
+	overflow-wrap: anywhere;
+}
+
+.rc-site-map-help code {
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+
+.rc-site-map-help ul {
+	padding-inline-start: 1.5em;
+	list-style: disc;
+}
+
+.rc-site-map-help li {
+	margin-bottom: 8px;
+}

@@ -1,4 +1,13 @@
-# Changelog 
+# Changelog
+
+## 1.5
+
+- Strip title-filter HTML wrappers so sitemap links display clean text.
+- Fix settings page wrapping and long shortcode examples on narrow screens.
+- Apply WordPress Coding Standards, add direct-access guards, and make dashboard help translatable.
+- Secure shortcode HTML output and fix include/exclude ID parsing for PHP 8.
+- List all published entries, restore hierarchical output and depth controls, and preserve the current post context.
+- Fix empty wrappers, normalize sorting, and declare PHP 8.0 as the minimum version.
 
 ## 1.4
 

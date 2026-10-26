@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset name="RC Site Map">
+	<description>WordPress Coding Standards for the distributable plugin.</description>
+	<file>trunk</file>
+	<arg name="extensions" value="php"/>
+	<arg value="s"/>
+	<config name="minimum_supported_wp_version" value="4.6"/>
+	<rule ref="WordPress"/>
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="rc-site-map"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="rc_site_map"/>
+				<element value="rc_sitemap"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

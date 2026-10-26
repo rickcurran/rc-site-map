@@ -3,9 +3,9 @@ Contributors: rickcurran
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZEXMAMCYDS3G
 Tags: sitemap
 Requires at least: 4.6
-Tested up to: 6.4
-Stable tag: 1.4
-Requires PHP: 5.6
+Tested up to: 7.1
+Stable tag: 1.5
+Requires PHP: 8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,16 +22,18 @@ Site map (`rc_sitemap`)
 This shortcode is used to get and render a list of published posts like a site map. The attributes are as follows:
 
 - `post_type` - defaults to 'page'. You can use 'post', 'page' or any post type name.
-- `orderby` - defaults to 'menu_order'. Comma-separated list of options to sort by: accepts 'post_author', 'post_date', 'post_title', 'post_name', 'post_modified', 'post_modified_gmt', 'menu_order', 'post_parent', 'ID', 'rand', or 'comment_count'.
+- `orderby` - defaults to 'menu_order'. Comma-separated list of options to sort by: accepts 'post_author', 'post_date', 'post_title', 'post_name', 'post_modified', 'menu_order', 'post_parent', 'ID', 'rand', or 'comment_count'.
 - `order` - defaults to 'ASC'.
 - `heading_text` - defaults to empty, show no heading.
-- `heading_tag` - defaults to h2. Note, do not include greater than / less than characters, only the alphanumeric characters e.g. p, h1, h2, h3 etc.
+- `heading_tag` - defaults to h2. Accepts h1–h6, p, div or span; invalid values fall back to h2.
 - `heading_class` - defaults to `'rc_sitemap_heading'`. CSS Class added to the heading element.
-- `child_of` - defaults to empty. Display only the sub-pages of a single page by ID. Default 0 (all pages). Note, only works for hierarchical post types.
-- `depth` - defaults to empty. Number of levels in the hierarchy of pages to include in the generated list. Accepts -1 (any depth), 0 (all pages), 1 (top-level pages only), and n (pages to the given n depth).
+- `child_of` - defaults to empty. Display all descendants of a page by ID, excluding the parent itself. Empty or 0 includes all pages. Only applies to hierarchical post types and takes precedence over post_parent.
+- `post_parent` - optional. Select immediate children of a parent ID; 0 selects top-level entries. Ignored when child_of is set.
+- `depth` - defaults to empty. Number of levels in the hierarchy of pages to include in the generated list. Accepts -1 (a flat list of all matching entries), 0 or empty (all levels nested), 1 (top-level entries only), and n (entries to the given depth). With child_of, depth starts at the selected parent’s children. Non-hierarchical post types always render as flat lists.
 - `exclude` - defaults to empty. Comma-separated list of post IDs to exclude.
 - `include` - defaults to empty. Comma-separated list of post IDs to include.
-- `wrapper` - defaults to `'ul'`. Wrapping element of the list. Note, do not include greater than / less than characters, only the alphanumeric characters e.g. ul, p etc.
+- `wrapper` - defaults to `'ul'`. Wrapping element of the list. Accepts ul, ol or an empty value for no wrapper. Invalid values fall back to ul; nested lists use ul.
+- `post__in` / `post__not_in` - aliases for include / exclude. The friendly attributes take precedence when supplied.
 - `wrapper_class` - defaults to `'rc_sitemap_list'`. CSS Class added to the wrapping element of the list.
 
 == Example usage: ==
@@ -50,13 +52,13 @@ The following is an example of a more advanced usage with custom settings applie
 2. This screen shot shows the output of the shortcode being rendered on the front end of the website.
 
 == Installation ==
-	
+
 1. Upload the plugin package to the plugins directory of your site, or search for "RC Site Map" in the WordPress plugins directory from the Plugins section of your WordPress dashboard.
 2. Once uploaded or installed you must activate the plugin from the Plugins section of your WordPress dashboard.
 3. You can now use the shortcode `[rc_sitemap]` to display a list of the pages of your site.
-	
+
 == Frequently Asked Questions ==
-	
+
 = What does this plugin do? =
 
 This plugin adds a shortcode that will list a site map or list of a particular type of post such as page, post or custom post types. The shortcode is registered using the name: `rc_sitemap`. The shortcode will by default render an unordered list of the entries with a class of `"rc_sitemap_list"`. The optional heading that it outputs has the class `"rc_sitemap_heading"`
@@ -71,13 +73,13 @@ Check that the plugin has been correctly uploaded, installed and activated. If n
 
 = How can I change and style the output of this plugin? =
 
-By default the wrapping element of the rendered list is a `<ul>` tag which has a default class of `rc_sitemap_list`. It is possible to change the wrapping element via the `wrapper` attribute of the shortcode, however, the listed items are always wrapped in `<li>` elements so you should really only change the wrapper to use either `<ol>` (via `wrapper="ol"`) to create an ordered list or set it to an empty value (via `wrapper=""`) to render no wrapping element. Using any other wrapping element will technically work but would render an invalid HTML structure and may not display nicely in web browsers.
+By default the wrapping element of the rendered list is a `<ul>` tag which has a default class of `rc_sitemap_list`. It is possible to change the wrapping element via the `wrapper` attribute of the shortcode, however, the listed items are always wrapped in `<li>` elements so you should really only change the wrapper to use either `<ol>` (via `wrapper="ol"`) to create an ordered list or set it to an empty value (via `wrapper=""`) to render no wrapping element. Other values fall back to ul. Nested lists use ul even when the outer wrapper is ol or empty.
 
-The optional `heading_text` attribute can be used to provide a heading for the list using either the default `h2` tag or a custom element using the accompanying `heading_tag` attribute (e.g. `heading_text="Hello World!" heading_tag="h1"`). The heading has a default class of `rc_sitemap_heading` which can be changed using the `heading_class` attribute. The plugin doesn't provide any default CSS styling but simply adds these default classes to the rendered HTML output, so you can either add styles using the standard `rc_sitemap_list` and `rc_sitemap_heading` classes or add your own using the attributes outlined above. 
+The optional `heading_text` attribute can be used to provide a heading for the list using either the default `h2` tag or a custom element using the accompanying `heading_tag` attribute (e.g. `heading_text="Hello World!" heading_tag="h1"`). The heading has a default class of `rc_sitemap_heading` which can be changed using the `heading_class` attribute. The plugin doesn't provide any default CSS styling but simply adds these default classes to the rendered HTML output, so you can either add styles using the standard `rc_sitemap_list` and `rc_sitemap_heading` classes or add your own using the attributes outlined above.
 
 Note: multiple CSS classes can be added to the above elements by separating them with spaces (e.g. `wrapper_class="my_first_class my_second_class my_third_class"`).
 
-In addition to the elements and classes specified above, each of the rendered list items and inner hyperlink have some default classes that are added as part of the plugin's use of `wp_list_pages` to retrieve the list of entries: 
+In addition to the elements and classes specified above, the rendered list items have these default classes:
 
 - `page_item` - This class is added to each `li` list element.
 
@@ -92,6 +94,15 @@ In addition to the elements and classes specified above, each of the rendered li
 If necessary the above default classes can be overridden from within your theme by specifying them in some custom CSS.
 
 == Changelog ==
+
+= 1.5 =
+
+- Strip title-filter HTML wrappers so sitemap links display clean text.
+- Fix settings page wrapping and long shortcode examples on narrow screens.
+- Apply WordPress Coding Standards, add direct-access guards, and make dashboard help translatable.
+- Secure shortcode HTML output and fix include/exclude ID parsing for PHP 8.
+- List all published entries, restore hierarchical output and depth controls, and preserve the current post context.
+- Fix empty wrappers, normalize sorting, and declare PHP 8.0 as the minimum version.
 
 = 1.2 =
 
