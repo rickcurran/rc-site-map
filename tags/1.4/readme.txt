@@ -3,9 +3,9 @@ Contributors: rickcurran
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=QZEXMAMCYDS3G
 Tags: sitemap
 Requires at least: 4.6
-Tested up to: 6.6
+Tested up to: 7.1
 Stable tag: 1.4
-Requires PHP: 5.6
+Requires PHP: 8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
